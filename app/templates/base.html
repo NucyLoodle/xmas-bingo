@@ -45,6 +45,9 @@
                 <li class="nav__item">
                   <a href="{{ url_for('index') }}" class="nav__link">Home</a>
                 </li>
+                <li class="nav__item">
+                  <a href="{{ url_for('user', username=current_user.username) }}" class="nav__link">Profile</a>
+                </li>
                 {% if current_user.is_anonymous %}
                 <li class="nav__item">
                   <a href="{{ url_for('login') }}" class="nav__link">Login</a>
