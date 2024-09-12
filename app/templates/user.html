@@ -4,31 +4,48 @@
     {% block content %}
         <section class="giving section">
             <div class="container">
-            <h2 class="section-title">
-                Hi, {{ current_user.username }}!
-            </h2>
-
-            <div class="giving__container">
-                <div class="giving__content">
-                <img src="/static/img/giving1.png" alt="" class="giving__img" />
-                <h3 class="giving__title">Surprise gifts</h3>
-                <p class="giving__description">
-                    They are the best gifts there is.
-                </p>
+                <h2 class="section-title">
+                    Hi, {{ current_user.username }}!
+                </h2>
+                <div class="giving__container">
+                    <div class="giving__content">
+                        <img src="/static/img/giving1.png" alt="" class="giving__img" />
+                        {% if user.about_me %}
+                            <h3 class="giving__title"></h3>
+                            <p class="giving__description">
+                                {{ user.about_me }}
+                            </p>
+                        {% endif %}
+                    </div>
+                    <!-- <div class="giving__content">
+                        <img src="/static/img/giving1.png" alt="" class="giving__img" />
+                        <h3 class="giving__title">Surprise gifts</h3>
+                        <p class="giving__description">
+                            They are the best gifts there is.
+                        </p>
+                    </div> -->
+                    <!-- <div class="giving__content">
+                        <img src="/static/img/giving2.png" alt="" class="giving__img" />
+                        <h3 class="giving__title">Ornaments</h3>
+                        <p class="giving__description">Give a moment to decorate.</p>
+                    </div> -->
+                    <div class="giving__content">
+                        <img src="/static/img/giving2.png" alt="" class="giving__img" />
+                        {% if user.last_seen %}
+                            <h3 class="giving__title">Last seen on: {{ user.last_seen }}</h3>
+                            <p class="giving__description">Give a moment to decorate.</p>
+                        {% endif %}
+                    </div>
+                    <div class="giving__content">
+                        <img src="/static/img/giving3.png" alt="" class="giving__img" />
+                        {% if user == current_user %}
+                            <h3 class="giving__title"><a href="{{ url_for('edit_profile') }}">Edit your profile</a></h3>
+                            <p class="giving__description">
+                                Give away feelings that last forever.
+                            </p>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="giving__content">
-                <img src="/static/img/giving2.png" alt="" class="giving__img" />
-                <h3 class="giving__title">Ornaments</h3>
-                <p class="giving__description">Give a moment to decorate.</p>
-                </div>
-                <div class="giving__content">
-                <img src="/static/img/giving3.png" alt="" class="giving__img" />
-                <h3 class="giving__title">Lots of love</h3>
-                <p class="giving__description">
-                    Give away feelings that last forever.
-                </p>
-                </div>
-            </div>
             </div>
         </section>
     {% endblock %}
